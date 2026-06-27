@@ -1,0 +1,461 @@
+[
+  {
+    "id": "5aa6a8d3cfad",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 56.87,
+      "y": 180.35,
+      "w": 110.87,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CALLE DE AZORIN num.29",
+      "x": 56.87,
+      "y": 180.35,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "daa973ca4afc",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 55.43,
+      "y": 211.67,
+      "w": 14.4,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "412",
+      "x": 55.43,
+      "y": 211.67,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "56e99544f290",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 98.63,
+      "y": 211.67,
+      "w": 86.39,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "FAVOUR IBIANG OMINI",
+      "x": 98.63,
+      "y": 211.67,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "79176f5f5bee",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 326.84,
+      "y": 212.03,
+      "w": 36.72,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "24/07/2025",
+      "x": 326.84,
+      "y": 212.03,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "710647cb3c0a",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 450.7161806885377,
+      "y": 237.75638261539189,
+      "w": 38.76265548090184,
+      "h": 8.640000000000002
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "B03062594",
+      "x": 450.7161806885377,
+      "y": 237.75638261539189,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "be70418a0a41",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 55.79,
+      "y": 233.63,
+      "w": 36.72,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "01/ 06/ 1984",
+      "x": 55.79,
+      "y": 233.63,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "455cc159c745",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 92.51,
+      "y": 280.43,
+      "w": 71.99,
+      "h": 7.2
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "RESIDENCIA",
+      "x": 92.51,
+      "y": 280.43,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "0d8133f9830b",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 196.89,
+      "y": 280.43,
+      "w": 28.08,
+      "h": 7.2
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "24/07/2025",
+      "x": 196.89,
+      "y": 280.43,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "f1d22bf2ddec",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 239.73,
+      "y": 280.07,
+      "w": 83.51,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CALLE DE AZORIN num.29",
+      "x": 239.73,
+      "y": 280.07,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "afb67800cc14",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 407.47,
+      "y": 280.79,
+      "w": 70.55,
+      "h": 8.64
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "LEON- LEON",
+      "x": 407.47,
+      "y": 280.79,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "8ff6a0f8d9f4",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 56.87,
+      "y": 321.1,
+      "w": 181.42,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Esta es la hoja 1 de la presente certificacion extendida en",
+      "x": 56.87,
+      "y": 321.1,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "9ee1133cf436",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 141.83,
+      "w": 90.71,
+      "h": 10.8
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "DATOS DE LA VIVIENDA",
+      "x": 53.99,
+      "y": 141.83,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "30e876591aa1",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 293.11855898374694,
+      "y": 129.58999999999995,
+      "w": 181.6765608373613,
+      "h": 10.800000000000002
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": " fecha 10 de febrero de 2026,Ia siguierite Inscripclor;",
+      "x": 293.11855898374694,
+      "y": 129.58999999999995,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "9d8d3c5e4f08",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 378.67,
+      "y": 362.14,
+      "w": 68.39,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "10 de febrero de 2026 ",
+      "x": 378.67,
+      "y": 362.14,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "1d27b5ff6ef0",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 116.63,
+      "w": 295.16,
+      "h": 11.52
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "D:: CARMEN JAEN MARTIN, SECRETARIA GENERAL DE ESTE AYUNTAMIENTO,",
+      "x": 53.99,
+      "y": 116.63,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "2e94054f8ab1",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 512.57,
+      "y": 805.64,
+      "w": 53.99,
+      "h": 8.64
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Scanned with",
+      "x": 512.57,
+      "y": 805.64,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#fff5f5",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "ff977bdcd029",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 502.85,
+      "y": 816.08,
+      "w": 74.87,
+      "h": 12.96
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CS CamScanner",
+      "x": 502.85,
+      "y": 816.08,
+      "font_size": 9.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#ffffff",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

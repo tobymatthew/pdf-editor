@@ -1,0 +1,83 @@
+[
+  {
+    "id": "c515638fe3c8",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 98.63,
+      "y": 211.67,
+      "w": 86.39,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "SEUN JOSEPH ",
+      "x": 98.63,
+      "y": 211.67,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "4eb0f0f2feee",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 55.43,
+      "y": 211.67,
+      "w": 14.4,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "[397",
+      "x": 55.43,
+      "y": 211.67,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "8b86825e1b99",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 99.71,
+      "y": 205.55,
+      "w": 19.44,
+      "h": 5.76
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Nambn",
+      "x": 99.71,
+      "y": 205.55,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

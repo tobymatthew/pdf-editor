@@ -1,0 +1,262 @@
+[
+  {
+    "id": "d6fa83d2c898",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 116.63,
+      "w": 295.16,
+      "h": 11.52
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "D:: CARMEN JAEN MARTIN, SECRETARIA GENERAL DE ESTE AYUNTAMIENTO,",
+      "x": 53.99,
+      "y": 116.63,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "a4218cdf604b",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 98.28,
+      "w": 135.7,
+      "h": 14.4
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Padron Municlpal - LEON (LEON)",
+      "x": 53.99,
+      "y": 98.28,
+      "font_size": 10.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "8eb91ab65bce",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.63,
+      "y": 127.79,
+      "w": 232.53,
+      "h": 12.96
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CERTIFICO: Que en el Padron Municipal de este municlplo figura,",
+      "x": 53.63,
+      "y": 127.79,
+      "font_size": 9.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "6d1ab864482e",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 141.83,
+      "w": 90.71,
+      "h": 10.8
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "DATOS DE LA VIVIENDA",
+      "x": 53.99,
+      "y": 141.83,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "80a814ee6907",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 350.23,
+      "y": 101.16,
+      "w": 158.38,
+      "h": 13.68
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CERTIFICADO HISTORICO INDIVIDUAL",
+      "x": 350.23,
+      "y": 101.16,
+      "font_size": 10.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "04d7dcc2e2a2",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 56.87,
+      "y": 180.35,
+      "w": 110.87,
+      "h": 10.08
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CALLE PUERTA QBISPO Num 13",
+      "x": 56.87,
+      "y": 180.35,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "e0a32f65d7f4",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 493.49,
+      "y": 155.87,
+      "w": 34.56,
+      "h": 6.48
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Itels Padronjl",
+      "x": 493.49,
+      "y": 155.87,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "fc92583570e4",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 410.7,
+      "y": 204.83,
+      "w": 77.03,
+      "h": 7.2
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Tlpo d` Documento do Idantdid",
+      "x": 410.7,
+      "y": 204.83,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "ead0a476890b",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 56.51,
+      "y": 257.75,
+      "w": 228.21,
+      "h": 13.68
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Produciendo Ios siguientes movimientos en el Padron Municipal:",
+      "x": 56.51,
+      "y": 257.75,
+      "font_size": 10.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "1ef8d5d9bda2",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 239.73,
+      "y": 280.07,
+      "w": 83.51,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CALLE PUERTA OBISPO Num: 13",
+      "x": 239.73,
+      "y": 280.07,
+      "font_size": 8.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

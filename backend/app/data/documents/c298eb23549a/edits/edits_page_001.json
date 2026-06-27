@@ -1,0 +1,29 @@
+[
+  {
+    "id": "bf8faa084d7f",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 291.56,
+      "y": 129.59,
+      "w": 176.38,
+      "h": 10.8
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": " fecha 16 de abril de 2026,Ia siguierite Inscripclor;",
+      "x": 291.56,
+      "y": 129.59,
+      "font_size": 8.0,
+      "font_id": "e7ca6d0140cd",
+      "font_family": "Arial Bold",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

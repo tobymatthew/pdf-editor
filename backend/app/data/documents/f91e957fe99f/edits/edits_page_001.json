@@ -1,0 +1,80 @@
+[
+  {
+    "id": "e85ef9b5da23",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 150.0,
+      "y": 273.0,
+      "w": 377.0,
+      "h": 40.0
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Padron Municlpal - LEON ",
+      "x": 150.0,
+      "y": 273.0,
+      "font_size": 28.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "fe3ca6b7911a",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 150.0,
+      "y": 324.0,
+      "w": 820.0,
+      "h": 32.0
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "D:: CARMEN JAEN MARTIN, SECRETARIA GENERAL DE ESTE AYUNTAMIENTO,",
+      "x": 150.0,
+      "y": 324.0,
+      "font_size": 22.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "e69c1510ba09",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 149.0,
+      "y": 355.0,
+      "w": 646.0,
+      "h": 36.0
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CERTIFICO: Que en el Padron Municipal de este municlplo figura,",
+      "x": 149.0,
+      "y": 355.0,
+      "font_size": 25.0,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

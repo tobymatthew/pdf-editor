@@ -1,0 +1,42 @@
+{
+  "page_number": 1,
+  "page_width": 612.0,
+  "page_height": 792.0,
+  "coordinate_space": "pdf_points",
+  "blocks": [
+    {
+      "id": "span_000",
+      "text": "Editable sample text",
+      "bbox": {
+        "x": 72.0,
+        "y": 94.2,
+        "w": 216.1,
+        "h": 32.98
+      },
+      "style": {
+        "font_name": "Helvetica",
+        "font_size": 24.0,
+        "color": "#000000",
+        "bold": false,
+        "italic": false
+      }
+    },
+    {
+      "id": "span_001",
+      "text": "Second line for zoom testing",
+      "bbox": {
+        "x": 72.0,
+        "y": 154.95,
+        "w": 176.64,
+        "h": 19.24
+      },
+      "style": {
+        "font_name": "Helvetica",
+        "font_size": 14.0,
+        "color": "#000000",
+        "bold": false,
+        "italic": false
+      }
+    }
+  ]
+}

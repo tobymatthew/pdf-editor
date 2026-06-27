@@ -1,0 +1,824 @@
+{
+  "page_number": 1,
+  "image_width": 1653,
+  "image_height": 2339,
+  "page_width": 595.0,
+  "page_height": 842.0,
+  "coordinate_space": "pdf_points",
+  "blocks": [
+    {
+      "id": "block_000",
+      "text": "Padron Municlpal - LEON (LEON)",
+      "bbox": {
+        "x": 53.99,
+        "y": 98.28,
+        "w": 135.7,
+        "h": 14.4
+      },
+      "confidence": 0.946
+    },
+    {
+      "id": "block_001",
+      "text": "CERTIFICADO HISTORICO INDIVIDUAL",
+      "bbox": {
+        "x": 350.23,
+        "y": 101.16,
+        "w": 158.38,
+        "h": 13.68
+      },
+      "confidence": 0.979
+    },
+    {
+      "id": "block_002",
+      "text": "D:: CARMEN JAEN MARTIN, SECRETARIA GENERAL DE ESTE AYUNTAMIENTO,",
+      "bbox": {
+        "x": 53.99,
+        "y": 116.63,
+        "w": 295.16,
+        "h": 11.52
+      },
+      "confidence": 0.741
+    },
+    {
+      "id": "block_003",
+      "text": "CERTIFICO: Que en el Padron Municipal de este municlplo figura,",
+      "bbox": {
+        "x": 53.63,
+        "y": 127.79,
+        "w": 232.53,
+        "h": 12.96
+      },
+      "confidence": 0.793
+    },
+    {
+      "id": "block_004",
+      "text": "fecha 16 de abril de 2026,Ia siguierite Inscripclor;",
+      "bbox": {
+        "x": 291.56,
+        "y": 129.59,
+        "w": 176.38,
+        "h": 10.8
+      },
+      "confidence": 0.555
+    },
+    {
+      "id": "block_005",
+      "text": "DATOS DE LA VIVIENDA",
+      "bbox": {
+        "x": 53.99,
+        "y": 141.83,
+        "w": 90.71,
+        "h": 10.8
+      },
+      "confidence": 0.978
+    },
+    {
+      "id": "block_006",
+      "text": "Entded Cokrtya",
+      "bbox": {
+        "x": 57.95,
+        "y": 155.15,
+        "w": 42.47,
+        "h": 7.2
+      },
+      "confidence": 0.104
+    },
+    {
+      "id": "block_007",
+      "text": "Entldid Singulsr",
+      "bbox": {
+        "x": 175.3,
+        "y": 155.51,
+        "w": 39.59,
+        "h": 7.56
+      },
+      "confidence": 0.655
+    },
+    {
+      "id": "block_008",
+      "text": "Niiclco / DlsemInudo",
+      "bbox": {
+        "x": 296.24,
+        "y": 156.59,
+        "w": 48.95,
+        "h": 5.76
+      },
+      "confidence": 0.278
+    },
+    {
+      "id": "block_009",
+      "text": "DlstrIto",
+      "bbox": {
+        "x": 420.06,
+        "y": 156.59,
+        "w": 18.0,
+        "h": 5.76
+      },
+      "confidence": 0.287
+    },
+    {
+      "id": "block_010",
+      "text": "Saccion",
+      "bbox": {
+        "x": 456.78,
+        "y": 156.59,
+        "w": 20.16,
+        "h": 5.76
+      },
+      "confidence": 0.52
+    },
+    {
+      "id": "block_011",
+      "text": "Itels Padronjl",
+      "bbox": {
+        "x": 493.49,
+        "y": 155.87,
+        "w": 34.56,
+        "h": 6.48
+      },
+      "confidence": 0.116
+    },
+    {
+      "id": "block_012",
+      "text": "LEON",
+      "bbox": {
+        "x": 173.5,
+        "y": 162.71,
+        "w": 21.6,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_013",
+      "text": "LEON",
+      "bbox": {
+        "x": 295.16,
+        "y": 162.71,
+        "w": 20.88,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_014",
+      "text": "10",
+      "bbox": {
+        "x": 418.98,
+        "y": 163.43,
+        "w": 10.08,
+        "h": 8.64
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_015",
+      "text": "601",
+      "bbox": {
+        "x": 493.13,
+        "y": 162.71,
+        "w": 13.68,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_016",
+      "text": "Domkit",
+      "bbox": {
+        "x": 58.31,
+        "y": 173.51,
+        "w": 23.4,
+        "h": 7.2
+      },
+      "confidence": 0.435
+    },
+    {
+      "id": "block_017",
+      "text": "CALLE PUERTA QBISPO Num 13",
+      "bbox": {
+        "x": 56.87,
+        "y": 180.35,
+        "w": 110.87,
+        "h": 10.08
+      },
+      "confidence": 0.545
+    },
+    {
+      "id": "block_018",
+      "text": "DATOS DEL HABITANTE",
+      "bbox": {
+        "x": 53.99,
+        "y": 192.23,
+        "w": 89.99,
+        "h": 10.8
+      },
+      "confidence": 0.986
+    },
+    {
+      "id": "block_019",
+      "text": "Moren",
+      "bbox": {
+        "x": 55.79,
+        "y": 204.11,
+        "w": 23.04,
+        "h": 7.2
+      },
+      "confidence": 0.11
+    },
+    {
+      "id": "block_020",
+      "text": "Nambn",
+      "bbox": {
+        "x": 99.71,
+        "y": 205.55,
+        "w": 19.44,
+        "h": 5.76
+      },
+      "confidence": 0.173
+    },
+    {
+      "id": "block_021",
+      "text": "Scro",
+      "bbox": {
+        "x": 273.92,
+        "y": 205.55,
+        "w": 12.96,
+        "h": 5.76
+      },
+      "confidence": 0.545
+    },
+    {
+      "id": "block_022",
+      "text": "Fechu da Inrcripcion",
+      "bbox": {
+        "x": 327.2,
+        "y": 205.19,
+        "w": 49.67,
+        "h": 7.2
+      },
+      "confidence": 0.375
+    },
+    {
+      "id": "block_023",
+      "text": "Tlpo d` Documento do Idantdid",
+      "bbox": {
+        "x": 410.7,
+        "y": 204.83,
+        "w": 77.03,
+        "h": 7.2
+      },
+      "confidence": 0.173
+    },
+    {
+      "id": "block_024",
+      "text": "[397",
+      "bbox": {
+        "x": 55.43,
+        "y": 211.67,
+        "w": 14.4,
+        "h": 10.08
+      },
+      "confidence": 0.31
+    },
+    {
+      "id": "block_025",
+      "text": "SEUN JOSEPH ADEBOYE",
+      "bbox": {
+        "x": 98.63,
+        "y": 211.67,
+        "w": 86.39,
+        "h": 9.36
+      },
+      "confidence": 0.998
+    },
+    {
+      "id": "block_026",
+      "text": "VVaron",
+      "bbox": {
+        "x": 272.84,
+        "y": 212.39,
+        "w": 20.88,
+        "h": 8.64
+      },
+      "confidence": 0.243
+    },
+    {
+      "id": "block_027",
+      "text": "18/06/2025",
+      "bbox": {
+        "x": 326.84,
+        "y": 212.03,
+        "w": 36.72,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_028",
+      "text": "DMA",
+      "bbox": {
+        "x": 412.86,
+        "y": 214.19,
+        "w": 13.68,
+        "h": 6.48
+      },
+      "confidence": 0.372
+    },
+    {
+      "id": "block_029",
+      "text": "Pasaporte",
+      "bbox": {
+        "x": 442.38,
+        "y": 214.91,
+        "w": 25.2,
+        "h": 6.48
+      },
+      "confidence": 0.547
+    },
+    {
+      "id": "block_030",
+      "text": "Vd Extr:",
+      "bbox": {
+        "x": 481.26,
+        "y": 214.91,
+        "w": 23.04,
+        "h": 7.2
+      },
+      "confidence": 0.111
+    },
+    {
+      "id": "block_031",
+      "text": "Fech} de Nrlnert?",
+      "bbox": {
+        "x": 57.23,
+        "y": 227.87,
+        "w": 48.95,
+        "h": 5.76
+      },
+      "confidence": 0.075
+    },
+    {
+      "id": "block_032",
+      "text": "[Luzsr do Nschlonra",
+      "bbox": {
+        "x": 116.26,
+        "y": 227.15,
+        "w": 50.39,
+        "h": 7.56
+      },
+      "confidence": 0.095
+    },
+    {
+      "id": "block_033",
+      "text": "Provincin do Nacimionto",
+      "bbox": {
+        "x": 246.57,
+        "y": 227.51,
+        "w": 57.59,
+        "h": 6.84
+      },
+      "confidence": 0.354
+    },
+    {
+      "id": "block_034",
+      "text": "Pais da Niclona Idad",
+      "bbox": {
+        "x": 327.2,
+        "y": 228.59,
+        "w": 49.67,
+        "h": 5.76
+      },
+      "confidence": 0.301
+    },
+    {
+      "id": "block_035",
+      "text": "Numaro",
+      "bbox": {
+        "x": 412.14,
+        "y": 228.59,
+        "w": 20.16,
+        "h": 6.48
+      },
+      "confidence": 0.335
+    },
+    {
+      "id": "block_036",
+      "text": "Latr)",
+      "bbox": {
+        "x": 494.21,
+        "y": 230.03,
+        "w": 12.96,
+        "h": 5.76
+      },
+      "confidence": 0.084
+    },
+    {
+      "id": "block_037",
+      "text": "16/09/1995",
+      "bbox": {
+        "x": 55.79,
+        "y": 233.63,
+        "w": 36.72,
+        "h": 9.36
+      },
+      "confidence": 0.637
+    },
+    {
+      "id": "block_038",
+      "text": "NIGERIA",
+      "bbox": {
+        "x": 116.62,
+        "y": 233.99,
+        "w": 30.24,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_039",
+      "text": "NIGERIA",
+      "bbox": {
+        "x": 326.84,
+        "y": 234.71,
+        "w": 30.24,
+        "h": 9.36
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_040",
+      "text": "B03692971",
+      "bbox": {
+        "x": 451.74,
+        "y": 237.23,
+        "w": 36.72,
+        "h": 8.64
+      },
+      "confidence": 0.656
+    },
+    {
+      "id": "block_041",
+      "text": "Produciendo Ios siguientes movimientos en el Padron Municipal:",
+      "bbox": {
+        "x": 56.51,
+        "y": 257.75,
+        "w": 228.21,
+        "h": 13.68
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "block_042",
+      "text": "Sltuaclon",
+      "bbox": {
+        "x": 59.39,
+        "y": 271.79,
+        "w": 23.76,
+        "h": 6.48
+      },
+      "confidence": 0.531
+    },
+    {
+      "id": "block_043",
+      "text": "Oreracibn",
+      "bbox": {
+        "x": 92.51,
+        "y": 271.79,
+        "w": 25.2,
+        "h": 6.48
+      },
+      "confidence": 0.14
+    },
+    {
+      "id": "block_044",
+      "text": "F Oparacion",
+      "bbox": {
+        "x": 196.17,
+        "y": 271.79,
+        "w": 31.68,
+        "h": 6.48
+      },
+      "confidence": 0.529
+    },
+    {
+      "id": "block_045",
+      "text": "Domlcillo",
+      "bbox": {
+        "x": 239.01,
+        "y": 271.43,
+        "w": 24.12,
+        "h": 7.56
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "block_046",
+      "text": "Procedencla",
+      "bbox": {
+        "x": 407.83,
+        "y": 272.51,
+        "w": 29.52,
+        "h": 5.76
+      },
+      "confidence": 0.713
+    },
+    {
+      "id": "block_047",
+      "text": "Alta",
+      "bbox": {
+        "x": 58.31,
+        "y": 279.35,
+        "w": 15.12,
+        "h": 8.64
+      },
+      "confidence": 0.637
+    },
+    {
+      "id": "block_048",
+      "text": "A-CANBiO DE RESIDENCIA",
+      "bbox": {
+        "x": 92.51,
+        "y": 280.43,
+        "w": 71.99,
+        "h": 7.2
+      },
+      "confidence": 0.493
+    },
+    {
+      "id": "block_049",
+      "text": "18,06/2025",
+      "bbox": {
+        "x": 196.89,
+        "y": 280.43,
+        "w": 28.08,
+        "h": 7.2
+      },
+      "confidence": 0.729
+    },
+    {
+      "id": "block_050",
+      "text": "CALLE PUERTA OBISPO Num: 13",
+      "bbox": {
+        "x": 239.73,
+        "y": 280.07,
+        "w": 83.51,
+        "h": 9.36
+      },
+      "confidence": 0.791
+    },
+    {
+      "id": "block_051",
+      "text": "BARCELONA - BARCELONA",
+      "bbox": {
+        "x": 407.47,
+        "y": 280.79,
+        "w": 70.55,
+        "h": 8.64
+      },
+      "confidence": 0.952
+    },
+    {
+      "id": "block_052",
+      "text": "OBSERVACIONES",
+      "bbox": {
+        "x": 53.99,
+        "y": 293.03,
+        "w": 69.83,
+        "h": 10.8
+      },
+      "confidence": 0.977
+    },
+    {
+      "id": "block_053",
+      "text": "Esta es la hoja 1 de la presente certificacion extendida en",
+      "bbox": {
+        "x": 56.87,
+        "y": 321.1,
+        "w": 181.42,
+        "h": 10.08
+      },
+      "confidence": 0.61
+    },
+    {
+      "id": "block_054",
+      "text": "hojas:",
+      "bbox": {
+        "x": 243.33,
+        "y": 322.54,
+        "w": 20.88,
+        "h": 9.36
+      },
+      "confidence": 0.969
+    },
+    {
+      "id": "block_055",
+      "text": "EFECTO PARA EL QUE SE EXPIDE",
+      "bbox": {
+        "x": 54.71,
+        "y": 334.06,
+        "w": 130.3,
+        "h": 11.52
+      },
+      "confidence": 0.856
+    },
+    {
+      "id": "block_056",
+      "text": "Y para que conste, y a ls efectos que se indica, expido la presente certificacion en LEON a",
+      "bbox": {
+        "x": 54.71,
+        "y": 361.42,
+        "w": 321.08,
+        "h": 11.52
+      },
+      "confidence": 0.697
+    },
+    {
+      "id": "block_057",
+      "text": "16 de abril de 2026_",
+      "bbox": {
+        "x": 378.67,
+        "y": 362.14,
+        "w": 68.39,
+        "h": 10.08
+      },
+      "confidence": 0.707
+    },
+    {
+      "id": "block_058",
+      "text": "VPBo",
+      "bbox": {
+        "x": 54.71,
+        "y": 374.38,
+        "w": 18.72,
+        "h": 9.36
+      },
+      "confidence": 0.621
+    },
+    {
+      "id": "block_059",
+      "text": "EN FUNCIONES DE ALCALDE-PRESIDENTE",
+      "bbox": {
+        "x": 77.03,
+        "y": 374.38,
+        "w": 167.74,
+        "h": 10.8
+      },
+      "confidence": 0.803
+    },
+    {
+      "id": "block_060",
+      "text": "SECRETARIA GENERAL",
+      "bbox": {
+        "x": 318.2,
+        "y": 374.38,
+        "w": 89.99,
+        "h": 10.08
+      },
+      "confidence": 0.89
+    },
+    {
+      "id": "block_061",
+      "text": "D. VICENTE CANURIA ATIENZA",
+      "bbox": {
+        "x": 77.03,
+        "y": 385.54,
+        "w": 118.78,
+        "h": 11.16
+      },
+      "confidence": 0.662
+    },
+    {
+      "id": "block_062",
+      "text": "Da. CARMEN JAEN MARTIN",
+      "bbox": {
+        "x": 318.2,
+        "y": 386.62,
+        "w": 101.51,
+        "h": 10.08
+      },
+      "confidence": 0.686
+    },
+    {
+      "id": "block_063",
+      "text": "N",
+      "bbox": {
+        "x": 75.23,
+        "y": 442.42,
+        "w": 6.48,
+        "h": 7.92
+      },
+      "confidence": 0.998
+    },
+    {
+      "id": "block_064",
+      "text": "9",
+      "bbox": {
+        "x": 93.59,
+        "y": 453.58,
+        "w": 10.08,
+        "h": 13.68
+      },
+      "confidence": 0.428
+    },
+    {
+      "id": "block_065",
+      "text": "1",
+      "bbox": {
+        "x": 97.91,
+        "y": 465.1,
+        "w": 10.08,
+        "h": 26.64
+      },
+      "confidence": 0.111
+    },
+    {
+      "id": "block_066",
+      "text": "Carmen Jaen Mattfn",
+      "bbox": {
+        "x": 370.75,
+        "y": 473.02,
+        "w": 134.26,
+        "h": 16.2
+      },
+      "confidence": 0.349
+    },
+    {
+      "id": "block_067",
+      "text": "Fdlo-Vicente Carula _",
+      "bbox": {
+        "x": 103.31,
+        "y": 502.9,
+        "w": 87.47,
+        "h": 15.48
+      },
+      "confidence": 0.23
+    },
+    {
+      "id": "block_068",
+      "text": "ncleaacinn",
+      "bbox": {
+        "x": 116.98,
+        "y": 513.7,
+        "w": 38.51,
+        "h": 10.8
+      },
+      "confidence": 0.14
+    },
+    {
+      "id": "block_069",
+      "text": "TASAS 3,15 €",
+      "bbox": {
+        "x": 69.83,
+        "y": 736.53,
+        "w": 52.55,
+        "h": 10.8
+      },
+      "confidence": 0.716
+    },
+    {
+      "id": "block_070",
+      "text": "Scanned with",
+      "bbox": {
+        "x": 512.57,
+        "y": 805.64,
+        "w": 53.99,
+        "h": 8.64
+      },
+      "confidence": 1.0
+    },
+    {
+      "id": "block_071",
+      "text": "CS CamScanner",
+      "bbox": {
+        "x": 502.85,
+        "y": 816.08,
+        "w": 74.87,
+        "h": 12.96
+      },
+      "confidence": 0.786
+    },
+    {
+      "id": "block_072",
+      "text": "Miei",
+      "bbox": {
+        "x": 57.91,
+        "y": 441.11,
+        "w": 21.32,
+        "h": 19.53
+      },
+      "confidence": 0.452
+    },
+    {
+      "id": "block_073",
+      "text": "Aticriza",
+      "bbox": {
+        "x": 188.27,
+        "y": 507.62,
+        "w": 34.16,
+        "h": 15.04
+      },
+      "confidence": 0.374
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "36f53830ed25",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 350.23,
+      "y": 101.16,
+      "w": 158.38,
+      "h": 13.68
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "CERTIFICADO HISTORICO INDIVIDUAL",
+      "x": 350.23,
+      "y": 101.16,
+      "font_size": 10.0,
+      "font_id": null,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "f38a963967b4",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 116.63,
+      "w": 295.16,
+      "h": 11.52
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "D:: CARMEN JAEN MARTIN, SECRETARIA GENERAL DE ESTE AYUNTAMIENTO,",
+      "x": 53.99,
+      "y": 116.63,
+      "font_size": 8.0,
+      "font_id": null,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "477929e7e9e0",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 53.99,
+      "y": 98.28,
+      "w": 135.7,
+      "h": 14.4
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Padron Municlpal - LEON (LEON)",
+      "x": 53.99,
+      "y": 98.28,
+      "font_size": 10.0,
+      "font_id": null,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "5bbf2d8a87aa",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 295.16,
+      "y": 162.71,
+      "w": 20.88,
+      "h": 9.36
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "LEON",
+      "x": 295.16,
+      "y": 162.71,
+      "font_size": 8.0,
+      "font_id": null,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  },
+  {
+    "id": "1f010dc92ea5",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 296.24,
+      "y": 156.59,
+      "w": 48.95,
+      "h": 5.76
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Niiclco / DlsemInudo",
+      "x": 296.24,
+      "y": 156.59,
+      "font_size": 8.0,
+      "font_id": null,
+      "font_family": "Arial",
+      "color": "#111111",
+      "bold": false,
+      "italic": false
+    }
+  }
+]

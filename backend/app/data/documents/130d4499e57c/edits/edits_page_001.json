@@ -1,0 +1,29 @@
+[
+  {
+    "id": "6dc1399acc14",
+    "page_number": 1,
+    "type": "text_replacement",
+    "target_bbox": {
+      "x": 72.0,
+      "y": 94.2,
+      "w": 216.1,
+      "h": 32.98
+    },
+    "cover": {
+      "enabled": true,
+      "method": "sampled_background",
+      "padding": 4
+    },
+    "text": {
+      "value": "Edited zoom text",
+      "x": 72.0,
+      "y": 94.2,
+      "font_size": 24.0,
+      "font_id": "4cf960567c12",
+      "font_family": "Helvetica",
+      "color": "#000000",
+      "bold": false,
+      "italic": false
+    }
+  }
+]
