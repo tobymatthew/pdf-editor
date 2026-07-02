@@ -27,6 +27,13 @@ class EditTargetBBox(BaseModel):
     h: float
 
 
+class SignatureRef(BaseModel):
+    image_filename: str  # relative to the document's data dir
+    source_signature_id: Optional[str] = None
+    width: int = 0
+    height: int = 0
+
+
 class Edit(BaseModel):
     id: str
     page_number: int
@@ -34,6 +41,7 @@ class Edit(BaseModel):
     target_bbox: EditTargetBBox
     cover: CoverConfig = CoverConfig()
     text: TextConfig = TextConfig()
+    signature: Optional[SignatureRef] = None
 
 
 class EditCreate(BaseModel):
@@ -42,9 +50,11 @@ class EditCreate(BaseModel):
     target_bbox: EditTargetBBox
     cover: CoverConfig = CoverConfig()
     text: TextConfig = TextConfig()
+    signature_id: Optional[str] = None  # library id, when type == "signature"
 
 
 class EditUpdate(BaseModel):
     target_bbox: Optional[EditTargetBBox] = None
     cover: Optional[CoverConfig] = None
     text: Optional[TextConfig] = None
+    signature: Optional[SignatureRef] = None

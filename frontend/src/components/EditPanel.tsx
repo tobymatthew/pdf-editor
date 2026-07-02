@@ -32,6 +32,22 @@ export default function EditPanel({
     );
   }
 
+  if (selectedEdit.type === "signature") {
+    return (
+      <div style={styles.panel}>
+        <h3 style={styles.title}>Signature</h3>
+        <p style={{ color: "#6b7280", fontSize: 13, lineHeight: 1.5 }}>
+          Drag to reposition. Use the corner handles to resize (aspect ratio is
+          locked). Signatures overlay the page and are burned into the exported
+          PDF.
+        </p>
+        <button style={styles.deleteBtn} onClick={onDeleteEdit}>
+          Remove Signature
+        </button>
+      </div>
+    );
+  }
+
   const matchesFamily = (font: FontInfo, family: string) => {
     const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "");
     const requested = normalize(family);
@@ -52,12 +68,22 @@ export default function EditPanel({
       <h3 style={styles.title}>Edit Properties</h3>
 
       <label style={styles.label}>Replacement Text</label>
-      <input
-        style={styles.input}
+      <textarea
+        style={{ ...styles.input, minHeight: 88, resize: "vertical" }}
         value={selectedEdit.text.value}
         onChange={(e) => onUpdateText(e.target.value)}
-        placeholder="Enter new text..."
+        placeholder={
+          selectedEdit.cover.enabled
+            ? "Enter replacement text..."
+            : "Enter text to place on the PDF..."
+        }
       />
+
+      {!selectedEdit.cover.enabled && (
+        <p style={styles.hint}>
+          This text box is placed on top of the PDF without covering existing content.
+        </p>
+      )}
 
       <label style={styles.label}>Font Size</label>
       <input
@@ -156,5 +182,12 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 4,
     cursor: "pointer",
     fontSize: 14,
+  },
+  hint: {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 12,
+    lineHeight: 1.5,
+    color: "#6b7280",
   },
 };

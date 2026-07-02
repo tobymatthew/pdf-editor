@@ -4,9 +4,11 @@ import { DocumentMetadata, PageCropBox, PageInfo } from "../types/document";
 import { NativeTextBlock, NativeTextPageResult } from "../types/nativeText";
 import { OCRBlock, OCRPageResult } from "../types/ocr";
 import { Edit, EditCreate, EditTargetBBox, FontInfo } from "../types/edit";
+import { SignatureInfo } from "../types/signature";
 import * as api from "../api/client";
 import Toolbar from "./Toolbar";
 import EditPanel from "./EditPanel";
+import SignatureManager from "./SignatureManager";
 
 const PageCanvas = dynamic(() => import("./PageCanvas"), { ssr: false });
 type SaveStatus = "idle" | "saving" | "saved" | "error";
@@ -40,6 +42,8 @@ export default function PdfEditor({ docId }: { docId: string }) {
   const [undoStack, setUndoStack] = useState<Edit[][]>([]);
   const [redoStack, setRedoStack] = useState<Edit[][]>([]);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>("saved");
+  const [signaturePickerOpen, setSignaturePickerOpen] = useState(false);
+  const [insertTextMode, setInsertTextMode] = useState(false);
 
   const scale = zoom;
   const formatFontLabel = useCallback(
@@ -223,6 +227,93 @@ export default function PdfEditor({ docId }: { docId: string }) {
     }
     setOcrRunning(false);
   }, [docId, currentPage]);
+
+  const handleAddSignature = useCallback(
+    async (signature: SignatureInfo) => {
+      const aspect = signature.height > 0 ? signature.width / signature.height : 3;
+      const targetW = Math.min(220, pageW * 0.4);
+      const targetH = Math.max(20, targetW / aspect);
+      const targetBbox: EditTargetBBox = {
+        x: Math.max(0, (pageW - targetW) / 2),
+        y: pageH * 0.7,
+        w: targetW,
+        h: targetH,
+      };
+      const createData: EditCreate = {
+        page_number: currentPage,
+        type: "signature",
+        target_bbox: targetBbox,
+        cover: { enabled: false, method: "white", padding: 0 },
+        text: {
+          value: "",
+          x: targetBbox.x,
+          y: targetBbox.y,
+          font_size: 16,
+          font_family: "Arial",
+          color: "#111111",
+          bold: false,
+          italic: false,
+        },
+        signature_id: signature.id,
+      };
+      try {
+        const previousEdits = cloneEdits(edits);
+        setSaveStatus("saving");
+        const edit = await api.createEdit(docId, currentPage, createData);
+        rememberHistory(previousEdits);
+        setEdits((prev) => [...prev, edit]);
+        setSelectedEditId(edit.id);
+        setSaveStatus("saved");
+        setSignaturePickerOpen(false);
+      } catch (e) {
+        console.error("Failed to add signature", e);
+        setSaveStatus("error");
+        alert("Failed to add signature.");
+      }
+    },
+    [currentPage, docId, edits, pageH, pageW, rememberHistory]
+  );
+
+  const handleCreateTextField = useCallback(
+    async (bbox: EditTargetBBox) => {
+      const matchedFont = fonts.find((font) => matchesFontFamily(font, "Arial")) || null;
+      const createData: EditCreate = {
+        page_number: currentPage,
+        type: "text_replacement",
+        target_bbox: bbox,
+        cover: {
+          enabled: false,
+          method: "white",
+          padding: 0,
+        },
+        text: {
+          value: "",
+          x: bbox.x,
+          y: bbox.y,
+          font_size: Math.max(12, Math.round(bbox.h * 0.7)),
+          font_id: matchedFont?.id || undefined,
+          font_family: matchedFont ? formatFontLabel(matchedFont) : "Arial",
+          color: "#111111",
+          bold: false,
+          italic: false,
+        },
+      };
+      try {
+        const previousEdits = cloneEdits(edits);
+        setSaveStatus("saving");
+        const edit = await api.createEdit(docId, currentPage, createData);
+        rememberHistory(previousEdits);
+        setEdits((prev) => [...prev, edit]);
+        setSelectedEditId(edit.id);
+        setInsertTextMode(false);
+        setSaveStatus("saved");
+      } catch (e) {
+        console.error("Failed to create text field", e);
+        setSaveStatus("error");
+      }
+    },
+    [currentPage, docId, edits, fonts, formatFontLabel, matchesFontFamily, rememberHistory]
+  );
 
   const createEditFromBlock = useCallback(
     async (
@@ -431,18 +522,33 @@ export default function PdfEditor({ docId }: { docId: string }) {
 
   const handleUpdateEditBbox = useCallback(
     async (editId: string, bbox: EditTargetBBox) => {
+      const existing = edits.find((e) => e.id === editId);
+      if (!existing) return;
+      const previousEdits = cloneEdits(edits);
+      const optimisticEdit: Edit = {
+        ...existing,
+        target_bbox: bbox,
+        text:
+          existing.type === "signature"
+            ? existing.text
+            : { ...existing.text, x: bbox.x, y: bbox.y },
+      };
       try {
-        const previousEdits = cloneEdits(edits);
         setSaveStatus("saving");
+        setEdits((prev) => prev.map((e) => (e.id === editId ? optimisticEdit : e)));
         const edit = await api.updateEdit(docId, currentPage, editId, {
           target_bbox: bbox,
-          text: { ...edits.find((e) => e.id === editId)!.text, x: bbox.x, y: bbox.y },
+          text:
+            existing.type === "signature"
+              ? existing.text
+              : { ...existing.text, x: bbox.x, y: bbox.y },
         });
         rememberHistory(previousEdits);
         setEdits((prev) => prev.map((e) => (e.id === edit.id ? edit : e)));
         setSaveStatus("saved");
       } catch (e) {
         console.error("Failed to update bbox", e);
+        setEdits(previousEdits);
         setSaveStatus("error");
       }
     },
@@ -515,6 +621,9 @@ export default function PdfEditor({ docId }: { docId: string }) {
         hasSelectableText={
           Boolean(ocrResult?.blocks.length) || Boolean(nativeTextResult?.blocks.length)
         }
+        onAddSignature={() => setSignaturePickerOpen(true)}
+        insertTextMode={insertTextMode}
+        onToggleInsertText={() => setInsertTextMode((value) => !value)}
       />
 
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
@@ -544,8 +653,13 @@ export default function PdfEditor({ docId }: { docId: string }) {
             onUpdateCropBox={handleUpdateCropBox}
             onSelectOcrBlock={handleSelectOcrBlock}
             onSelectNativeTextBlock={handleSelectNativeTextBlock}
+            onCreateTextField={handleCreateTextField}
             showOcr={showOcr}
             scale={scale}
+            getSignatureImageUrl={(editId) =>
+              api.getEditSignatureImageUrl(docId, currentPage, editId)
+            }
+            insertTextMode={insertTextMode}
           />
         </div>
 
@@ -560,6 +674,13 @@ export default function PdfEditor({ docId }: { docId: string }) {
           onDeleteEdit={handleDeleteEdit}
         />
       </div>
+
+      {signaturePickerOpen && (
+        <SignatureManager
+          onPick={handleAddSignature}
+          onClose={() => setSignaturePickerOpen(false)}
+        />
+      )}
     </div>
   );
 }

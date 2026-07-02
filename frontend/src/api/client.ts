@@ -2,6 +2,7 @@ import { DocumentMetadata, PageCropBox, PageInfo } from "../types/document";
 import { NativeTextPageResult } from "../types/nativeText";
 import { OCRPageResult } from "../types/ocr";
 import { Edit, EditCreate, EditUpdate, FontInfo } from "../types/edit";
+import { SignatureInfo } from "../types/signature";
 
 const BASE = "http://localhost:8000";
 
@@ -151,4 +152,36 @@ export async function exportDocument(documentId: string): Promise<Blob> {
   });
   if (!res.ok) throw new Error("Export failed");
   return res.blob();
+}
+
+export async function listSignatures(): Promise<SignatureInfo[]> {
+  return request("/signatures");
+}
+
+export async function createSignature(
+  file: Blob,
+  name?: string,
+  options?: { aggressive?: boolean }
+): Promise<SignatureInfo> {
+  const form = new FormData();
+  form.append("file", file);
+  if (name) form.append("name", name);
+  if (options?.aggressive) form.append("aggressive", "true");
+  return request("/signatures", { method: "POST", body: form });
+}
+
+export async function deleteSignature(id: string): Promise<void> {
+  await fetch(`${BASE}/signatures/${id}`, { method: "DELETE" });
+}
+
+export function getSignatureImageUrl(id: string): string {
+  return `${BASE}/signatures/${id}/image`;
+}
+
+export function getEditSignatureImageUrl(
+  documentId: string,
+  pageNumber: number,
+  editId: string
+): string {
+  return `${BASE}/documents/${documentId}/pages/${pageNumber}/edits/${editId}/signature-image`;
 }

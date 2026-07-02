@@ -11,7 +11,7 @@ from app.modules import ocr, page_analysis
 from app.modules.background_cover import create_cover_patch, sample_dominant_background
 from app.modules.coordinates import pdf_bbox_to_image_bbox, pdf_points_to_image_pixels
 from app.modules.document_intake import get_document
-from app.modules.edit_layer import list_edits
+from app.modules.edit_layer import list_edits, resolve_signature_image_path
 from app.modules.font_registry import resolve_font_path
 from app.modules.page_rendering import get_page_dimensions, get_page_image, render_page
 from app.modules import page_crop
@@ -136,13 +136,16 @@ def _insert_pdf_text(page: fitz.Page, edit: Edit) -> None:
     right = max(x + edit.target_bbox.w, x + 1)
     bottom = max(y + edit.target_bbox.h, y + 1)
     text_rect = fitz.Rect(x, y, right, bottom)
-    font_size = _fit_font_size(
-        edit.text.value,
-        font_path=font_path,
-        requested_size=max(float(edit.text.font_size), 1.0),
-        max_width=max(text_rect.width, 1),
-        max_height=max(text_rect.height, 1),
-    )
+    requested_font_size = max(float(edit.text.font_size), 1.0)
+    font_size = requested_font_size
+    if "\n" in edit.text.value:
+        font_size = _fit_font_size(
+            edit.text.value,
+            font_path=font_path,
+            requested_size=requested_font_size,
+            max_width=max(text_rect.width, 1),
+            max_height=max(text_rect.height, 1),
+        )
     kwargs = {
         "fontsize": font_size,
         "color": color,
@@ -232,8 +235,9 @@ def _apply_pdf_edits(
     page_width: float,
     page_height: float,
 ) -> None:
+    text_edits = [edit for edit in edits if edit.type != "signature"]
     has_redactions = False
-    for edit in edits:
+    for edit in text_edits:
         if not edit.cover.enabled:
             continue
         fill = _cover_color(
@@ -257,8 +261,23 @@ def _apply_pdf_edits(
             text=fitz.PDF_REDACT_TEXT_REMOVE,
         )
 
-    for edit in edits:
+    for edit in text_edits:
         _insert_pdf_text(page, edit)
+
+    _insert_signatures(page, edits, document_id=document_id)
+
+
+def _insert_signatures(page: fitz.Page, edits: list[Edit], *, document_id: str) -> None:
+    for edit in edits:
+        if edit.type != "signature":
+            continue
+        path = resolve_signature_image_path(document_id, edit)
+        if not path:
+            continue
+        rect = _rect_from_bbox(edit.target_bbox)
+        if rect.is_empty or rect.width <= 0 or rect.height <= 0:
+            continue
+        page.insert_image(rect, filename=path, overlay=True)
 
 
 def _add_invisible_ocr_text(page: fitz.Page, document_id: str, page_number: int) -> None:
@@ -300,6 +319,8 @@ def _render_raster_page(
     image_w, image_h = img.size
 
     for edit in edits:
+        if edit.type == "signature":
+            continue
         image_edit = _edit_to_image_space(
             edit,
             page_width=dim_w,
@@ -325,7 +346,11 @@ def _render_raster_page(
         _add_invisible_ocr_text(page, document_id, page_number)
 
     for edit in edits:
+        if edit.type == "signature":
+            continue
         _insert_pdf_text(page, edit)
+
+    _insert_signatures(page, edits, document_id=document_id)
 
     crop = page_crop.get_crop_box(document_id, page_number)
     if crop:

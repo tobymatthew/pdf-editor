@@ -68,6 +68,21 @@ def _normalized_text(page: fitz.Page) -> str:
     return page.get_text().replace("\xa0", " ")
 
 
+def _max_span_size_for_text(page: fitz.Page, needle: str) -> float:
+    sizes = []
+    normalized_needle = needle.replace("\xa0", " ")
+    for block in page.get_text("dict")["blocks"]:
+        for line in block.get("lines", []):
+            line_text = "".join(span.get("text", "") for span in line.get("spans", []))
+            line_text = line_text.replace("\xa0", " ")
+            if normalized_needle not in line_text:
+                continue
+            for span in line.get("spans", []):
+                if span.get("text", "").strip():
+                    sizes.append(float(span["size"]))
+    return max(sizes, default=0)
+
+
 def test_native_text_export_preserves_pdf_page_without_full_page_raster(temp_data_dir):
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
         _create_native_text_pdf(f.name)
@@ -82,6 +97,31 @@ def test_native_text_export_preserves_pdf_page_without_full_page_raster(temp_dat
         assert "Replacement Text" in text
         assert "Hello World Native Text" not in text
         assert len(page.get_images(full=True)) == 0
+    finally:
+        pdf.close()
+
+
+def test_single_line_replacement_respects_requested_font_size(temp_data_dir):
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+        _create_native_text_pdf(f.name)
+        meta = document_intake.create_document(f.name, "native.pdf")
+
+    edit_layer.create_edit(
+        meta.id,
+        1,
+        EditCreate(
+            page_number=1,
+            target_bbox=EditTargetBBox(x=45, y=72, w=45, h=12),
+            cover=CoverConfig(enabled=True, method="white", padding=2),
+            text=TextConfig(value="Ayodeji Adeboye", x=50, y=78, font_size=18),
+        ),
+    )
+
+    pdf = _open_exported_pdf(meta.id)
+    try:
+        page = pdf[0]
+        assert "Ayodeji Adeboye" in _normalized_text(page)
+        assert _max_span_size_for_text(page, "Ayodeji Adeboye") >= 17
     finally:
         pdf.close()
 

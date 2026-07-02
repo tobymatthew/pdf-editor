@@ -1,3 +1,5 @@
+import { SignatureRef } from "./signature";
+
 export interface EditTargetBBox {
   x: number;
   y: number;
@@ -30,6 +32,7 @@ export interface Edit {
   target_bbox: EditTargetBBox;
   cover: CoverConfig;
   text: TextConfig;
+  signature?: SignatureRef | null;
 }
 
 export interface EditCreate {
@@ -38,12 +41,14 @@ export interface EditCreate {
   target_bbox: EditTargetBBox;
   cover: CoverConfig;
   text: TextConfig;
+  signature_id?: string | null;
 }
 
 export interface EditUpdate {
   target_bbox?: EditTargetBBox;
   cover?: CoverConfig;
   text?: TextConfig;
+  signature?: SignatureRef | null;
 }
 
 export interface FontInfo {

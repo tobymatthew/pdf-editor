@@ -27,6 +27,9 @@ interface ToolbarProps {
   exporting: boolean;
   ocrRunning: boolean;
   hasSelectableText: boolean;
+  onAddSignature: () => void;
+  insertTextMode: boolean;
+  onToggleInsertText: () => void;
 }
 
 export default function Toolbar({
@@ -56,6 +59,9 @@ export default function Toolbar({
   exporting,
   ocrRunning,
   hasSelectableText,
+  onAddSignature,
+  insertTextMode,
+  onToggleInsertText,
 }: ToolbarProps) {
   return (
     <div style={styles.toolbar}>
@@ -150,6 +156,23 @@ export default function Toolbar({
             Clear Crop
           </button>
         )}
+      </div>
+
+      <div style={styles.group}>
+        <button
+          style={{
+            ...styles.btn,
+            background: insertTextMode ? "#dbeafe" : "#fff",
+            color: insertTextMode ? "#1d4ed8" : "#000",
+            borderColor: insertTextMode ? "#93c5fd" : "#d1d5db",
+          }}
+          onClick={onToggleInsertText}
+        >
+          {insertTextMode ? "Click Page To Place Text" : "Add Text"}
+        </button>
+        <button style={{ ...styles.btn, background: "#eef2ff", color: "#4338ca" }} onClick={onAddSignature}>
+          ✎ Add Signature
+        </button>
       </div>
 
       <div style={styles.group}>

@@ -2,7 +2,7 @@ import os
 import tempfile
 import shutil
 from typing import Optional
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -11,6 +11,7 @@ from app.models.font import FontInfo
 from app.models.edit import Edit, EditCreate, EditUpdate
 from app.models.native_text import NativeTextPageResult
 from app.models.ocr import OCRPageResult
+from app.models.signature import SignatureInfo
 from app.modules import (
     document_intake,
     page_rendering,
@@ -20,6 +21,7 @@ from app.modules import (
     native_text,
     font_registry,
     page_crop,
+    signature_registry,
 )
 
 app = FastAPI(title="Scan-Aware PDF Editor")
@@ -39,6 +41,46 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 @app.get("/fonts", response_model=list[FontInfo])
 async def list_fonts() -> list[FontInfo]:
     return font_registry.list_fonts()
+
+
+@app.get("/signatures", response_model=list[SignatureInfo])
+async def list_signatures() -> list[SignatureInfo]:
+    return signature_registry.list_signatures()
+
+
+@app.post("/signatures", response_model=SignatureInfo)
+async def create_signature(
+    file: UploadFile = File(...),
+    name: Optional[str] = Form(default=None),
+    aggressive: bool = Form(default=False),
+) -> SignatureInfo:
+    content = await file.read()
+    if not content:
+        raise HTTPException(status_code=400, detail="Empty file")
+    try:
+        return signature_registry.create_signature(
+            content,
+            name or file.filename or "Signature",
+            aggressive=aggressive,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid image: {e}")
+
+
+@app.get("/signatures/{signature_id}/image")
+async def get_signature_image(signature_id: str):
+    path = signature_registry.get_signature_path(signature_id)
+    if not path:
+        raise HTTPException(status_code=404, detail="Signature not found")
+    return FileResponse(path, media_type="image/png")
+
+
+@app.delete("/signatures/{signature_id}")
+async def delete_signature(signature_id: str):
+    ok = signature_registry.delete_signature(signature_id)
+    if not ok:
+        raise HTTPException(status_code=404, detail="Signature not found")
+    return {"ok": True}
 
 
 @app.post("/documents")
@@ -201,6 +243,20 @@ async def delete_edit(document_id: str, page_number: int, edit_id: str):
         return {"ok": True}
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
+
+@app.get("/documents/{document_id}/pages/{page_number}/edits/{edit_id}/signature-image")
+async def get_edit_signature_image(document_id: str, page_number: int, edit_id: str):
+    try:
+        edit = edit_layer.get_edit(document_id, page_number, edit_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    if not edit:
+        raise HTTPException(status_code=404, detail="Edit not found")
+    path = edit_layer.resolve_signature_image_path(document_id, edit)
+    if not path:
+        raise HTTPException(status_code=404, detail="Signature image not found")
+    return FileResponse(path, media_type="image/png")
 
 
 @app.post("/documents/{document_id}/export")

@@ -27,8 +27,31 @@ interface PageCanvasProps {
   onUpdateCropBox: (bbox: PageCropBox) => void;
   onSelectOcrBlock: (block: OCRBlock) => void;
   onSelectNativeTextBlock: (block: NativeTextBlock) => void;
+  onCreateTextField: (bbox: EditTargetBBox) => void;
   showOcr: boolean;
   scale: number;
+  getSignatureImageUrl: (editId: string) => string;
+  insertTextMode: boolean;
+}
+
+function useHtmlImage(url: string): HTMLImageElement | null {
+  const [image, setImage] = useState<HTMLImageElement | null>(null);
+  useEffect(() => {
+    if (!url) {
+      setImage(null);
+      return;
+    }
+    const img = new window.Image();
+    img.crossOrigin = "anonymous";
+    const handleLoad = () => setImage(img);
+    img.onload = handleLoad;
+    img.src = url;
+    if (img.complete) handleLoad();
+    return () => {
+      img.onload = null;
+    };
+  }, [url]);
+  return image;
 }
 
 export default function PageCanvas({
@@ -46,21 +69,34 @@ export default function PageCanvas({
   onUpdateCropBox,
   onSelectOcrBlock,
   onSelectNativeTextBlock,
+  onCreateTextField,
   showOcr,
   scale,
+  getSignatureImageUrl,
+  insertTextMode,
 }: PageCanvasProps) {
   const [image, setImage] = useState<HTMLImageElement | null>(null);
   const stageRef = useRef<Konva.Stage>(null);
   const transformerRef = useRef<Konva.Transformer>(null);
 
   useEffect(() => {
+    if (!imageUrl) {
+      setImage(null);
+      return;
+    }
     const img = new window.Image();
+    img.crossOrigin = "anonymous";
+    const handleLoad = () => setImage(img);
+    img.onload = handleLoad;
     img.src = imageUrl;
-    img.onload = () => setImage(img);
+    if (img.complete) handleLoad();
     return () => {
       img.onload = null;
     };
   }, [imageUrl]);
+
+  const selectedEdit = edits.find((e) => e.id === selectedEditId) || null;
+  const selectedIsSignature = selectedEdit?.type === "signature";
 
   useEffect(() => {
     if (transformerRef.current && cropMode) {
@@ -87,10 +123,36 @@ export default function PageCanvas({
   const handleStageClick = useCallback(
     (e: Konva.KonvaEventObject<MouseEvent>) => {
       if (e.target === e.target.getStage()) {
+        if (insertTextMode) {
+          const stage = stageRef.current;
+          const pointer = stage?.getPointerPosition();
+          if (!stage || !pointer) return;
+          const defaultWidth = Math.min(180, pageWidth * 0.45);
+          const defaultHeight = Math.max(28, pageHeight * 0.035);
+          const displayDefault = {
+            x: pointer.x,
+            y: pointer.y,
+            w: defaultWidth * scale,
+            h: defaultHeight * scale,
+          };
+          const bbox = canvasToPdfBbox(
+            displayDefault,
+            { width: pageWidth, height: pageHeight },
+            { width: displayW, height: displayH }
+          );
+          const clamped: EditTargetBBox = {
+            x: Math.max(0, Math.min(pageWidth - bbox.w, bbox.x)),
+            y: Math.max(0, Math.min(pageHeight - bbox.h, bbox.y)),
+            w: Math.min(bbox.w, pageWidth),
+            h: Math.min(bbox.h, pageHeight),
+          };
+          onCreateTextField(clamped);
+          return;
+        }
         onSelectEdit(null);
       }
     },
-    [onSelectEdit]
+    [displayH, displayW, insertTextMode, onCreateTextField, onSelectEdit, pageHeight, pageWidth, scale]
   );
 
   const handleDragEnd = useCallback(
@@ -164,7 +226,12 @@ export default function PageCanvas({
       height={displayH}
       onClick={handleStageClick}
       onTap={handleStageClick}
-      style={{ background: "#e5e7eb", borderRadius: 4, overflow: "hidden" }}
+      style={{
+        background: "#e5e7eb",
+        borderRadius: 4,
+        overflow: "hidden",
+        cursor: insertTextMode ? "crosshair" : "default",
+      }}
     >
       <Layer>
         {image && (
@@ -230,6 +297,23 @@ export default function PageCanvas({
             { width: pageWidth, height: pageHeight },
             { width: displayW, height: displayH }
           );
+          if (edit.type === "signature") {
+            return (
+              <SignatureEditNode
+                key={edit.id}
+                editId={edit.id}
+                imageUrl={getSignatureImageUrl(edit.id)}
+                x={canvasBbox.x}
+                y={canvasBbox.y}
+                width={canvasBbox.w}
+                height={canvasBbox.h}
+                selected={edit.id === selectedEditId}
+                onSelect={() => onSelectEdit(edit.id)}
+                onDragEnd={(e) => handleDragEnd(edit.id, e)}
+                onTransformEnd={(e) => handleTransformEnd(edit.id, e)}
+              />
+            );
+          }
           const textX = pdfToCanvasX(edit.text.x, pageWidth, displayW) - canvasBbox.x;
           const textY = pdfToCanvasY(edit.text.y, pageHeight, displayH) - canvasBbox.y;
           return (
@@ -240,10 +324,6 @@ export default function PageCanvas({
               y={canvasBbox.y}
               width={canvasBbox.w}
               height={canvasBbox.h}
-              clipX={0}
-              clipY={0}
-              clipWidth={canvasBbox.w}
-              clipHeight={canvasBbox.h}
               draggable
               onClick={() => onSelectEdit(edit.id)}
               onTap={() => onSelectEdit(edit.id)}
@@ -255,22 +335,25 @@ export default function PageCanvas({
                 y={0}
                 width={canvasBbox.w}
                 height={canvasBbox.h}
-                fill="#ffffff"
-                stroke="#ef4444"
-                strokeWidth={2}
+                fill={edit.cover.enabled ? "#ffffff" : "rgba(59, 130, 246, 0.08)"}
+                stroke={edit.id === selectedEditId ? "#ef4444" : "#3b82f6"}
+                strokeWidth={edit.id === selectedEditId ? 2 : 1}
+                dash={edit.cover.enabled ? undefined : [6, 4]}
               />
               {edit.text.value && (
                 <Text
                   x={textX}
                   y={textY}
                   text={edit.text.value}
-                  width={canvasBbox.w}
-                  height={canvasBbox.h}
+                  width={Math.max(canvasBbox.w, displayW - canvasBbox.x)}
+                  height={Math.max(
+                    canvasBbox.h,
+                    (edit.text.font_size / pageHeight) * displayH * 1.4
+                  )}
                   fontSize={(edit.text.font_size / pageHeight) * displayH}
                   fill={edit.text.color}
                   fontFamily={edit.text.font_family}
                   wrap="none"
-                  ellipsis
                 />
               )}
             </Group>
@@ -307,7 +390,7 @@ export default function PageCanvas({
         <Transformer
           ref={transformerRef}
           rotateEnabled={false}
-          keepRatio={false}
+          keepRatio={selectedIsSignature}
           boundBoxFunc={(oldBox, newBox) => {
             if (newBox.width < 10 || newBox.height < 10) return oldBox;
             return newBox;
@@ -315,5 +398,84 @@ export default function PageCanvas({
         />
       </Layer>
     </Stage>
+  );
+}
+
+interface SignatureEditNodeProps {
+  editId: string;
+  imageUrl: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  selected: boolean;
+  onSelect: () => void;
+  onDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
+  onTransformEnd: (e: Konva.KonvaEventObject<Event>) => void;
+}
+
+function SignatureEditNode({
+  editId,
+  imageUrl,
+  x,
+  y,
+  width,
+  height,
+  selected,
+  onSelect,
+  onDragEnd,
+  onTransformEnd,
+}: SignatureEditNodeProps) {
+  const img = useHtmlImage(imageUrl);
+  return (
+    <Group
+      id={`edit-${editId}`}
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      draggable
+      onMouseDown={onSelect}
+      onTouchStart={onSelect}
+      onClick={onSelect}
+      onTap={onSelect}
+      onDragStart={onSelect}
+      onDragEnd={onDragEnd}
+      onTransformEnd={onTransformEnd}
+    >
+      <Rect
+        x={0}
+        y={0}
+        width={Math.max(width, 18)}
+        height={Math.max(height, 18)}
+        fill="rgba(0,0,0,0.001)"
+        stroke={selected ? "#3b82f6" : "transparent"}
+        strokeWidth={selected ? 1 : 0}
+        dash={selected ? [6, 3] : undefined}
+      />
+      {selected && (
+        <Rect
+          x={-2}
+          y={-2}
+          width={width + 4}
+          height={height + 4}
+          fill="rgba(59,130,246,0.08)"
+          stroke="#3b82f6"
+          strokeWidth={1}
+          dash={[6, 3]}
+          listening={false}
+        />
+      )}
+      {img && (
+        <KonvaImage
+          image={img}
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+          listening={false}
+        />
+      )}
+    </Group>
   );
 }

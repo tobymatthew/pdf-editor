@@ -1,16 +1,43 @@
 import os
 import json
 import uuid
+import shutil
 from typing import Optional
 
 from app import config
-from app.models.edit import Edit, EditCreate, EditUpdate
+from app.models.edit import Edit, EditCreate, EditUpdate, SignatureRef
+from app.modules import signature_registry
 from app.modules.document_intake import validate_document_page
 
 
 def _edits_path(document_id: str, page_number: int) -> str:
     return os.path.join(
         config.DATA_DIR, document_id, "edits", f"edits_page_{page_number:03d}.json"
+    )
+
+
+def _doc_dir(document_id: str) -> str:
+    return os.path.join(config.DATA_DIR, document_id)
+
+
+def _signature_image_rel(edit_id: str) -> str:
+    return os.path.join("signature_images", f"{edit_id}.png")
+
+
+def _resolve_signature_edit(document_id: str, edit_id: str, signature_id: str) -> Optional[SignatureRef]:
+    meta = signature_registry.get_signature_meta(signature_id)
+    src_path = signature_registry.get_signature_path(signature_id)
+    if not meta or not src_path:
+        return None
+    dest_dir = os.path.join(_doc_dir(document_id), "signature_images")
+    os.makedirs(dest_dir, exist_ok=True)
+    dest_rel = _signature_image_rel(edit_id)
+    shutil.copy2(src_path, os.path.join(_doc_dir(document_id), dest_rel))
+    return SignatureRef(
+        image_filename=dest_rel,
+        source_signature_id=signature_id,
+        width=meta.width,
+        height=meta.height,
     )
 
 
@@ -42,13 +69,24 @@ def replace_edits(document_id: str, page_number: int, edits: list[Edit]) -> list
 
 def create_edit(document_id: str, page_number: int, data: EditCreate) -> Edit:
     validate_document_page(document_id, page_number)
+    edit_id = uuid.uuid4().hex[:12]
+    signature_ref = None
+    if data.type == "signature":
+        if not data.signature_id:
+            raise ValueError("signature_id is required for signature edits")
+        signature_ref = _resolve_signature_edit(
+            document_id, edit_id, data.signature_id
+        )
+        if not signature_ref:
+            raise ValueError(f"Signature {data.signature_id} not found")
     edit = Edit(
-        id=uuid.uuid4().hex[:12],
+        id=edit_id,
         page_number=page_number,
         type=data.type,
         target_bbox=data.target_bbox,
         cover=data.cover,
         text=data.text,
+        signature=signature_ref,
     )
     edits = _load_edits(document_id, page_number)
     edits.append(edit.model_dump())
@@ -86,3 +124,18 @@ def delete_edit(document_id: str, page_number: int, edit_id: str) -> bool:
 def list_edits(document_id: str, page_number: int) -> list[Edit]:
     validate_document_page(document_id, page_number)
     return [Edit(**e) for e in _load_edits(document_id, page_number)]
+
+
+def get_edit(document_id: str, page_number: int, edit_id: str) -> Optional[Edit]:
+    validate_document_page(document_id, page_number)
+    for entry in _load_edits(document_id, page_number):
+        if entry["id"] == edit_id:
+            return Edit(**entry)
+    return None
+
+
+def resolve_signature_image_path(document_id: str, edit: Edit) -> Optional[str]:
+    if not edit.signature:
+        return None
+    path = os.path.join(_doc_dir(document_id), edit.signature.image_filename)
+    return path if os.path.exists(path) else None
